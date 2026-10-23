@@ -1,7 +1,7 @@
 // Physics-inspired card stack with optional previews, hover callbacks, and click callbacks.
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import './BounceCards.css';
 
@@ -60,6 +60,7 @@ export default function BounceCards({
   const rootRef = useRef(null);
   const cardRefs = useRef([]);
   const wakeRef = useRef(null);
+  const [mobileIndex, setMobileIndex] = useState(0);
   // Normalize the public image API once per render.
   const cards = images.map(toCard);
   const count = cards.length;
@@ -87,7 +88,8 @@ export default function BounceCards({
     enableHover,
     pushDistance,
     hoverScale: clamp(hoverScale, 0.5, 2),
-    clickable: typeof onCardClick === 'function'
+    clickable: typeof onCardClick === 'function',
+    mobileIndex: count ? clamp(mobileIndex, 0, count - 1) : 0
   };
   const settingsRef = useRef(settings);
   const clickRef = useRef(onCardClick);
@@ -99,6 +101,12 @@ export default function BounceCards({
     clickRef.current = onCardClick;
     hoverRef.current = onCardHover;
   });
+
+  useEffect(() => {
+    if (window.matchMedia?.('(max-width: 700px)').matches) {
+      onCardHover?.(settings.mobileIndex);
+    }
+  }, [onCardHover, settings.mobileIndex]);
 
   // Start one animation loop that sleeps automatically when the stack is settled.
   useEffect(() => {
@@ -147,6 +155,8 @@ export default function BounceCards({
       state.time += dt;
 
       const hovered = s.enableHover ? state.hovered : -1;
+      const mobile = window.matchMedia?.('(max-width: 700px)').matches ?? false;
+      const active = mobile ? s.mobileIndex : hovered;
       const popStiffness = 170;
       const popDamping = 2 * (1 - 0.85 * s.bounciness) * Math.sqrt(popStiffness);
       const moveStiffness = 210;
@@ -161,11 +171,11 @@ export default function BounceCards({
         const card = body(i);
         const slot = s.slots[i];
         const appeared = reduce || state.time - card.born >= s.delay + i * s.stagger;
-        let targetX = slot.x;
-        let targetY = slot.y;
-        let targetRotate = slot.rotate;
+        let targetX = mobile ? (i === active ? 0 : (i < active ? -s.cardWidth * 1.5 : s.cardWidth * 1.5)) : slot.x;
+        let targetY = mobile ? 0 : slot.y;
+        let targetRotate = mobile ? 0 : slot.rotate;
         let targetScale = appeared ? 1 : 0;
-        if (hovered >= 0 && appeared) {
+        if (!mobile && hovered >= 0 && appeared) {
           if (i === hovered) {
             targetY = slot.y - s.cardHeight * 0.04;
             targetRotate = 0;
@@ -198,12 +208,12 @@ export default function BounceCards({
         el.style.transform = `translate(-50%, -50%) translate3d(${card.x.toFixed(2)}px, ${card.y.toFixed(2)}px, 0) rotate(${card.rotate.toFixed(3)}deg) scale(${Math.max(0, card.scale).toFixed(4)})`;
       }
 
-      if (state.layer !== hovered) {
-        state.layer = hovered;
+      if (state.layer !== active) {
+        state.layer = active;
         cardRefs.current.forEach((el, i) => {
           if (!el) return;
-          el.style.zIndex = i === hovered ? String(s.slots.length + 1) : String(i + 1);
-          el.toggleAttribute('data-active', i === hovered);
+          el.style.zIndex = i === active ? String(s.slots.length + 1) : String(i + 1);
+          el.toggleAttribute('data-active', i === active);
         });
       }
 
@@ -220,9 +230,17 @@ export default function BounceCards({
     // Resolve a pointer position to the closest visible card slot.
     const pick = event => {
       const s = settingsRef.current;
+      const mobile = window.matchMedia?.('(max-width: 700px)').matches ?? false;
       const rect = root.getBoundingClientRect();
       const px = event.clientX - rect.left - rect.width / 2;
       const py = event.clientY - rect.top - rect.height / 2;
+      if (mobile) {
+        const halfWidth = s.cardWidth / 2;
+        const halfHeight = s.cardHeight / 2;
+        return Math.abs(px) <= halfWidth + 12 && Math.abs(py) <= halfHeight + 12
+          ? s.mobileIndex
+          : -1;
+      }
       let best = -1;
       let distance = Infinity;
       s.slots.forEach((slot, i) => {
@@ -246,6 +264,7 @@ export default function BounceCards({
 
     // Wake the animation only when the hovered card changes.
     const onMove = event => {
+      if (window.matchMedia?.('(max-width: 700px)').matches) return;
       const next = pick(event);
       if (next !== state.hovered) {
         state.hovered = next;
@@ -254,6 +273,7 @@ export default function BounceCards({
       }
     };
     const onLeave = () => {
+      if (window.matchMedia?.('(max-width: 700px)').matches) return;
       if (state.hovered !== -1) {
         state.hovered = -1;
         hoverRef.current?.(-1);
@@ -333,6 +353,32 @@ export default function BounceCards({
         ...style
       }}
     >
+      {count > 1 && (
+        <div className="bounce-cards__mobile-controls" aria-label="Card navigation">
+          <button
+            type="button"
+            className="bounce-cards__mobile-arrow"
+            aria-label="Previous card"
+            onClick={event => {
+              event.stopPropagation();
+              setMobileIndex(index => (index - 1 + count) % count);
+            }}
+          >
+            <span aria-hidden="true">&lsaquo;</span>
+          </button>
+          <button
+            type="button"
+            className="bounce-cards__mobile-arrow"
+            aria-label="Next card"
+            onClick={event => {
+              event.stopPropagation();
+              setMobileIndex(index => (index + 1) % count);
+            }}
+          >
+            <span aria-hidden="true">&rsaquo;</span>
+          </button>
+        </div>
+      )}
       {cards.map((card, i) => (
         <div
           key={i}
