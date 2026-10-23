@@ -1,16 +1,103 @@
-# React + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My portfolio website. The portfolio highlights professional experience, selected projects, education, technical tools, and ways to get in touch. It is designed as a polished, responsive single-page experience with an interactive visual presentation.
 
-Currently, two official plugins are available:
+You can visit the live website at [aishshafa.github.io](https://aishshafa.github.io)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview
 
-## React Compiler
+The site includes:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- A personal introduction and professional profile
+- Selected recent projects
+- Education and background information
+- An overview of technical tools and technologies
+- GitHub and LinkedIn profile links
+- Direct email contact
+- Responsive navigation between portfolio sections
+- Interactive visual effects, including an animated gradient background and spotlight card interactions
 
-## Expanding the ESLint configuration
+## Built With
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React](https://react.dev/) — Component-based user interface development
+- [Quickly](https://vite.dev/) — Development server and production build tooling
+- [Tailwind CSS](https://tailwindcss.com/) — Utility-first styling
+- [shadcn](https://ui.shadcn.com/) — UI development utilities and components
+- JavaScript, HTML, and CSS
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm
+
+### Installation
+
+Clone the repository and install the project dependencies:
+
+```bash
+git clone https://github.com/AishShafa/aishshafa.github.io.git
+cd aishshafa.github.io
+npm install
+```
+
+### Development
+
+Start the local development server:
+
+```bash
+npm run dev
+```
+
+Vite will provide a local URL where you can preview the portfolio in your browser.
+
+### Production Build
+
+Create an optimized production build:
+
+```bash
+npm run build
+```
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+### Linting
+
+Run ESLint to check the project for code-quality issues:
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```text
+.
+├── public/                 # Static public assets
+├── src/
+│   ├── assets/             # Images and icons used throughout the portfolio
+│   ├── components/         # Reusable portfolio and visual components
+│   ├── App.jsx             # Main portfolio layout
+│   ├── main.jsx            # Application entry point
+│   └── index.css           # Global styles
+├── index.html              # HTML entry document
+├── package.json            # Scripts and dependencies
+└── vite.config.js          # Vite configuration
+```
+
+## Deployment
+
+This project is configured as a Vite-powered frontend and can be deployed to any static hosting provider that supports single-page applications. It is also suitable for deployment through GitHub Pages or a similar static hosting platform.
+
+## Contact
+
+- **GitHub:** [github.com/aishshafa](https://github.com/aishshafa)
+- **LinkedIn:** [linkedin.com/in/aishathshafa](https://linkedin.com/in/aishathshafa)
+- **Email:** [aishathshafaofficial@gmail.com](mailto:aishathshafaofficial@gmail.com)

@@ -1,0 +1,56 @@
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.experience-item {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.experience-item:last-child {
+  border-bottom: 0;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.exp-header h3 {
+  font-size: 1.5rem;
+  line-height: 1.15;
+}
+
+.exp-role {
+  color: #FFF7ED;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.exp-date {
+  flex-shrink: 0;
+  color: #FFF7ED;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.exp-details {
+  display: grid;
+  gap: 10px;
+  padding-left: 1.2rem;
+  color: rgba(255, 247, 237, 0.78);
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .exp-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+}

@@ -60,11 +60,6 @@ const Contact = () => {
         </div>
         
         <div className="form-group">
-          <label htmlFor="contact-budget">Budget</label>
-          <input id="contact-budget" name="budget" type="text" placeholder="Your budget (Leave empty if not applicable)" />
-        </div>
-
-        <div className="form-group">
           <label htmlFor="contact-message">Message</label>
           <textarea id="contact-message" name="message" rows="5" placeholder="Message" required></textarea>
         </div>

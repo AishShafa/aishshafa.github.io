@@ -8,6 +8,7 @@ import profilePhoto from './assets/photo.jpg';
 import RecentProjects from './components/RecentProjects';
 import PremiumTools from './components/PremiumTools';
 import Education from './components/Education';
+import Experience from './components/Experience';
 import Contact from './components/Contact';
 
 function App() {
@@ -97,10 +98,10 @@ automated testing, preparing data for reporting, and writing clear technical doc
             <p className="hero-desc">
               Hi, I’m Shafa, a software engineer who is passionate about building thoughtful, user-focused software experiences. From interactive web platforms to custom applications, I enjoy blending design, logic, and creativity to bring ideas to life.
             </p>
-
           </div>
           {/* Portfolio work, education, skills, and contact remain independently reusable. */}
           <RecentProjects />
+          <Experience />
           <Education />
           <PremiumTools />
           <Contact />

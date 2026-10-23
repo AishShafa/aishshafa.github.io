@@ -1,12 +1,13 @@
 /* Contact form layout, fields, and responsive submit control. */
 .contact-form { width: 100%; max-width: 800px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.form-group { display: flex; flex-direction: column; margin-bottom: 20px; }
+.form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.form-group { display: flex; flex-direction: column; min-width: 0; margin-bottom: 20px; }
 .form-group label { font-size: 0.8rem; color: #302d2e; margin-bottom: 8px; }
 .form-group input, .form-group textarea {
-  background: #222; border: 1px solid var(--border-color); color: #fff;
+  width: 100%; max-width: 100%; background: #222; border: 1px solid var(--border-color); color: #fff;
   padding: 15px; border-radius: 8px; font-family: inherit; outline: none;
 }
+.form-group textarea { min-height: 140px; resize: vertical; }
 .form-group input::placeholder, .form-group textarea::placeholder {
   color: var(--placeholder-text);
   opacity: 1;
@@ -60,7 +61,7 @@
 }
 .form-status-success { color: #d7f9df; }
 .form-status-error { color: #ffd1c7; }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .form-row { grid-template-columns: 1fr; }
   .contact-form { max-width: 100%; }
   #contact.section-spacing { padding-top: 35px; }

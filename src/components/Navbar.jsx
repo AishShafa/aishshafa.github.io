@@ -1,12 +1,14 @@
 // Render the fixed navigation with a glass backdrop and accessible flip states.
 import { useState } from 'react';
 import GlassSurface from './GlassSurface';
+import CvDownload from './CvDownload';
 import './Navbar.css';
 
 // Keep navigation labels and their in-page destinations in one data structure.
 const navItems = [
   { title: 'HOME', href: '#home' },
   { title: 'PROJECTS', href: '#projects' },
+  { title: 'EXPERIENCE', href: '#experience' },
   { title: 'EDUCATION', href: '#education' },
   { title: 'SKILLS', href: '#skills' },
   { title: 'CONTACT', href: '#contact' }
@@ -36,21 +38,24 @@ const Navbar = () => {
   return (
     // GlassSurface provides the visual container while this component owns navigation semantics.
     <nav className="navbar">
-      <GlassSurface
-        className="nav-pill"
-        width={540}
-        height={60}
-        borderRadius={30}
-        distortionScale={-180}
-        displace={0.5}
-        backgroundOpacity={0.1}
-      >
-        <div className="nav-items">
-          {navItems.map(item => (
-            <FlipItem key={item.title} {...item} />
-          ))}
-        </div>
-      </GlassSurface>
+      <div className="nav-controls">
+        <GlassSurface
+          className="nav-pill"
+          width={540}
+          height={60}
+          borderRadius={30}
+          distortionScale={-180}
+          displace={0.5}
+          backgroundOpacity={0.1}
+        >
+          <div className="nav-items">
+            {navItems.map(item => (
+              <FlipItem key={item.title} {...item} />
+            ))}
+          </div>
+        </GlassSurface>
+        <CvDownload />
+      </div>
     </nav>
   );
 };
