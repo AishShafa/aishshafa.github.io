@@ -10,7 +10,11 @@ const Contact = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setStatus('sending');
+    const form = event.currentTarget;
+    const formData = Object.fromEntries(new FormData(form));
+
+    form.reset();
+    setStatus('success');
 
     try {
       const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
@@ -20,7 +24,7 @@ const Contact = () => {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          ...Object.fromEntries(new FormData(event.currentTarget)),
+          ...formData,
           _subject: 'New portfolio contact message',
         }),
       });
@@ -33,9 +37,6 @@ const Contact = () => {
       if (result.success === false) {
         throw new Error('The contact form service rejected the request.');
       }
-
-      event.currentTarget.reset();
-      setStatus('success');
     } catch {
       setStatus('error');
     }
@@ -83,9 +84,7 @@ const Contact = () => {
           ambient={false}
           flare
         >
-          <button type="submit" className="submit-btn" disabled={status === 'sending'}>
-            {status === 'sending' ? 'Sending...' : 'Submit'}
-          </button>
+          <button type="submit" className="submit-btn">Submit</button>
         </SpotlightCard>
         {status === 'success' && (
           <p className="form-status form-status-success" role="status">
