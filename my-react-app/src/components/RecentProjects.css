@@ -1,0 +1,26 @@
+/* Project stack and hover caption alignment. */
+.project-bounce {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.project-hover-title {
+  min-height: 2rem;
+  margin: 18px auto 0;
+  color: #FFF7ED;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  pointer-events: none;
+  text-align: center;
+}
+
+.experience-list { display: flex; flex-direction: column; gap: 40px; }
+.experience-item { padding-bottom: 20px; }
+.exp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.exp-header h3 { font-size: 1.5rem; }
+.exp-role { color: #FFF7ED; margin-bottom: 10px; max-width: 700px; line-height: 1.6; }
+.exp-date { font-size: 0.8rem; color: #FFF7ED; }

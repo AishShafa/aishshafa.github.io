@@ -1,0 +1,480 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Global design tokens keep color and spacing decisions consistent. */
+:root {
+  --bg-color: #151313;
+  --text-main: #ffffff;
+  --text-muted: #979091;
+  --accent-orange: #ff6b3a;
+  --accent-green: #b5ff3b;
+  --border-color: #302c2d;
+  --placeholder-text: #8f898a;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+/* Normalize box sizing and browser default spacing across every component. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Establish the dark page canvas and the shared body font. */
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #120f17;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+  overflow-x: clip;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Keep the fixed background behind the interactive page content. */
+.app-wrapper {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  padding-bottom: 120px;
+}
+
+/* Center the email independently from the two-column content grid. */
+.site-email {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: fit-content;
+  margin: 72px auto 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.site-email:hover,
+.site-email:focus-visible {
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.site-background {
+  position: fixed !important;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+/* --- GLOBAL LAYOUT FOR STICKY SCROLL --- */
+
+/* Apply one horizontal alignment line to all main sections. */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 205px 40px 80px;
+}
+
+/* Reserve a sticky profile column beside the flexible content column. */
+.main-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 430px minmax(0, 1fr);
+  gap: 60px;
+  align-items: stretch;
+}
+
+.left-column {
+  position: relative;
+  align-self: stretch;
+  height: auto;
+  min-height: 0;
+}
+
+/* This makes the card stick! */
+/* The profile card remains visible while the right column scrolls. */
+.profile-card {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  background: var(--spotlight-card-surface, #111111);
+  color: #fff;
+  height: 800px;
+  min-height: 0;
+  padding: 37px 65px 34px;
+  border-radius: 20px;
+  text-align: center;
+  overflow: hidden;
+  scrollbar-width: none;
+}
+
+.left-column .profile-card {
+  position: sticky;
+  top: 120px;
+}
+
+.profile-card .spotlight-card__light {
+  z-index: 0;
+}
+
+.profile-card > :not(.spotlight-card__light):not(.spotlight-card__grain):not(.spotlight-card__border):not(.spotlight-card__edge) {
+  position: relative;
+  z-index: 2;
+}
+
+.profile-card::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.avatar-container {
+  height: 355px;
+  width: 300px;
+  max-width: 100%;
+  flex-shrink: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12px;
+  margin-bottom: 24px;
+  background: linear-gradient(145deg, #ff4f00, #c82f00);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-family: 'Geist Variable', sans-serif;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1;
+  margin-bottom: 78px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  text-transform: none;
+}
+
+.profile-bio {
+  max-width: 320px;
+  margin: 0 auto 20px;
+  color: #FFF7ED !important;
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+.profile-bio em {
+  color: #fff;
+  font-style: italic;
+  font-weight: inherit;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: auto;
+  color: var(--accent-orange);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
+}
+
+.social-links a:hover {
+  transform: translateY(-6px) scale(1.08);
+  opacity: 1;
+  background-color: rgba(249, 115, 22, 0.2);
+}
+
+.social-links img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.card-arc {
+  position: absolute;
+  z-index: 3;
+  width: 315px;
+  height: 315px;
+  border: 5px dashed var(--accent-orange);
+  pointer-events: none;
+}
+
+.profile-card .card-arc {
+  position: absolute !important;
+  z-index: 3 !important;
+}
+
+.card-arc-top {
+  top: -215px;
+  left: -50px;
+  border-radius: 50%;
+  transform: rotate(12deg);
+}
+
+/* --- Right Column Top Content (Hero) --- */
+/* Primary hero typography uses the same heavy heading treatment as section titles. */
+.hero-title {
+  font-size: clamp(4rem, 6vw, 6rem);
+  line-height: 1; 
+  font-weight: 900; 
+  letter-spacing: -5px;
+  margin-bottom: 28px;
+}
+
+.outline-text { 
+  color: #302d2e;
+  -webkit-text-stroke: 0;
+}
+
+.hero-desc { 
+  color: #FFF7ED !important; 
+  max-width: 650px;
+  font-size: 1.25rem;
+  margin-bottom: 0;
+  line-height: 1.35;
+}
+
+.right-column {
+  min-width: 0;
+}
+
+.right-column > .container {
+  max-width: none;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Shared vertical rhythm prevents sections from drifting apart. */
+.section-spacing {
+  padding-top: 92px;
+  padding-bottom: 92px;
+}
+
+.section-title {
+  margin-bottom: 44px;
+  color: #fff;
+  font-size: clamp(3.25rem, 5vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  line-height: 0.94;
+}
+
+.section-title .outline-text {
+  color: #302d2e;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 110px 20px 50px;
+  }
+
+  .main-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .profile-card {
+    position: relative; /* Remove sticky on mobile */
+    top: 0;
+    height: auto;
+    min-height: 800px;
+    padding-left: 34px;
+    padding-right: 34px;
+  }
+
+  .left-column .profile-card {
+    position: relative;
+    top: 0;
+  }
+
+  .hero-title { 
+    font-size: 3.8rem;
+    letter-spacing: -2px;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+
+  .right-column > .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section-spacing {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .section-title {
+    margin-bottom: 32px;
+  }
+
+  .social-links {
+    margin-top: 50px;
+    padding-bottom: 4px;
+  }
+
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: 'Geist Variable', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}

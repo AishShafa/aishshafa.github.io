@@ -1,0 +1,60 @@
+/* Contact form layout, fields, and responsive submit control. */
+.contact-form { width: 100%; max-width: 800px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group { display: flex; flex-direction: column; margin-bottom: 20px; }
+.form-group label { font-size: 0.8rem; color: #302d2e; margin-bottom: 8px; }
+.form-group input, .form-group textarea {
+  background: #222; border: 1px solid var(--border-color); color: #fff;
+  padding: 15px; border-radius: 8px; font-family: inherit; outline: none;
+}
+.form-group input::placeholder, .form-group textarea::placeholder {
+  color: var(--placeholder-text);
+  opacity: 1;
+}
+.form-group input:focus, .form-group textarea:focus { border-color: var(--accent-orange); }
+.submit-btn {
+  width: 100%; height: 100%; background: transparent; color: #fff; font-weight: 700;
+  padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.submit-btn:hover { opacity: 0.8; }
+.submit-spotlight {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  padding: 0;
+  border-radius: 8px;
+  background: var(--accent-orange);
+  box-shadow: none;
+}
+
+.contact-form .submit-spotlight {
+  align-self: stretch;
+  margin-top: 4px;
+}
+
+#contact.section-spacing {
+  padding-top: 50px;
+  padding-bottom: 0;
+}
+
+.submit-spotlight .spotlight-card__light {
+  z-index: 0;
+}
+.submit-spotlight .spotlight-card__border,
+.submit-spotlight .spotlight-card__edge {
+  border-radius: 8px;
+}
+.submit-spotlight .submit-btn {
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 768px) {
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { max-width: 100%; }
+  #contact.section-spacing { padding-top: 35px; }
+}
