@@ -12,7 +12,7 @@ const STIR_LIFE = 1.3;
 const STIR_STEP = 0.06;
 const TWIRL_LIFE = 2.6;
 const INTRO_SECONDS = 1.6;
-const DEFAULT_COLORS = ['#120f17', '#2a0f0a', '#9a3412', '#f97316', '#fed7aa'];
+const DEFAULT_COLORS = ['#120f17', '#2a0f18', '#5a1025', '#800020', '#d4a0aa'];
 // Match the public string API to the numeric shader mode values.
 const TYPES = { linear: 0, radial: 1 };
 const LIFT = 0.2;
