@@ -6,7 +6,7 @@ import './RecentProjects.css';
 // Project metadata drives card images, hover labels, previews, and click destinations.
 const projects = [
   {
-    title: 'zoomtravels.net',
+    title: 'Zoom Travels',
     image: 'https://images.unsplash.com/photo-1724152312974-d4d48b8b36fd?w=480&h=480&fit=crop',
     url: 'https://zoomtravels.net',
     preview: 'https://zoomtravels.net'
