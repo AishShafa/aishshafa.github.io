@@ -11,7 +11,11 @@ const projects = [
     url: 'https://zoomtravels.net',
     preview: 'https://zoomtravels.net'
   },
-  { title: 'More projects coming soon', image: 'https://images.unsplash.com/photo-1762846818262-33c197852fa8?w=480&h=480&fit=crop' },
+  { title: 'ShowRecs', 
+    image: 'https://images.unsplash.com/photo-1762846818262-33c197852fa8?w=480&h=480&fit=crop', 
+    url: 'https://showrecs.vercel.app',
+    preview: 'https://showrecs.vercel.app'
+  },
   { title: 'More projects coming soon', image: 'https://images.unsplash.com/photo-1721407964262-f9864b562453?w=480&h=480&fit=crop' },
   { title: 'More projects coming soon', image: 'https://images.unsplash.com/photo-1776394254711-4a0d7345269a?w=480&h=480&fit=crop' },
   { title: 'More projects coming soon', image: 'https://images.unsplash.com/photo-1763440519433-5467759054fc?w=480&h=480&fit=crop' }
