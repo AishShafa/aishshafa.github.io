@@ -4,14 +4,15 @@ import GlassSurface from './GlassSurface';
 import CvDownload from './CvDownload';
 import './Navbar.css';
 
-// Keep navigation labels and their in-page destinations in one data structure.
+// Keep navigation labels and 
+//their in-page destinations in one data structure.
 const navItems = [
   { title: 'HOME', href: '#home' },
   { title: 'PROJECTS', href: '#projects' },
   { title: 'EXPERIENCE', href: '#experience' },
   { title: 'EDUCATION', href: '#education' },
   { title: 'SKILLS', href: '#skills' },
-  { title: 'CONTACT', href: '#contact' }
+  { title: 'CONTACT ME', href: '#contact' }
 ];
 
 // A single link owns its hover/focus state so pointer and keyboard behavior match.
