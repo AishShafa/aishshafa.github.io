@@ -3,7 +3,7 @@ import { useState } from 'react';
 import BounceCards from './BounceCards';
 import './RecentProjects.css';
 
-// Project metadata drives card images, hover labels, previews, and click destinations.
+// Project metadata drives card images, hover labels, previews, and click destinations
 const projects = [
   {
     title: 'Zoom Travels',
