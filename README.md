@@ -1,6 +1,6 @@
-# Aish Shafa
+# Portfolio - Aishath Shafa
 
-This repository contains the source code for Aish Shafa's personal portfolio website. The site is published through GitHub Pages and is available at:
+This repository contains the source code for my portfolio website. The site is published through GitHub Pages and is now live and available at:
 
 https://aishshafa.github.io
 
@@ -15,29 +15,3 @@ The website is a lightweight static portfolio built with standard HTML, CSS, and
 - `script.js` - Interactive behavior such as menu handling, animations, and page-level JavaScript functionality.
 - `public/` - Static assets used by the website, such as images, media, or other downloadable files.
 - `404.html` - Custom error page shown when a requested page is not found.
-
-## Local development
-
-You can preview the site locally by opening `index.html` in a browser, or by serving the repository with a simple local web server.
-
-Example:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open:
-
-```text
-http://localhost:8000
-```
-
-## Deployment
-
-This project is configured for GitHub Pages. Any updates pushed to the default branch are published to the live site at:
-
-https://aishshafa.github.io
-
-## Notes
-
-This is a simple static portfolio website intended to be easy to maintain and update. If you want to change content, branding, layout, or sections, the main files to edit are `index.html`, `styles.css`, and `script.js`.
