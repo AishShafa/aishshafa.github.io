@@ -68,22 +68,75 @@ textarea {
   color: #f5f3ef;
 }
 
-/* Custom subtle scrollbar */
+/* Scrollbar fallback */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f5f3ef;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #dedad3;
+  background: #121212;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b5b0a6;
+  background: #000000;
+}
+
+html.has-custom-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html.has-custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.page-scrollbar {
+  position: fixed;
+  inset: 0;
+  z-index: 41;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  --scrollbar-thumb-width: 4px;
+  --scrollbar-track-width: 3px;
+}
+
+.page-scrollbar-track,
+.page-scrollbar-thumb {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.page-scrollbar-track {
+  stroke: transparent;
+  stroke-width: var(--scrollbar-track-width);
+}
+
+.page-scrollbar-thumb {
+  stroke: #121212;
+  stroke-width: var(--scrollbar-thumb-width);
+  pointer-events: stroke;
+  touch-action: none;
+  cursor: grab;
+  transition:
+    stroke-dashoffset 60ms linear,
+    stroke-width 150ms ease;
+}
+
+.page-scrollbar-thumb:active,
+.page-scrollbar.is-dragging .page-scrollbar-thumb {
+  stroke-width: 6px;
+  cursor: grabbing;
+}
+
+.page-scrollbar.is-dragging .page-scrollbar-thumb {
+  transition: stroke-width 150ms ease;
 }
 
 /* Utility classes */
@@ -339,12 +392,23 @@ textarea {
 
 /* Hero Section */
 .hero-section {
+  min-height: calc(100vh - 90px);
+  min-height: calc(100svh - 90px);
   padding-top: 48px;
   padding-bottom: 64px;
 }
 
+@media (max-width: 380px) {
+  .hero-section {
+    min-height: calc(100vh - 101px);
+    min-height: calc(100svh - 101px);
+  }
+}
+
 @media (min-width: 640px) {
   .hero-section {
+    min-height: calc(100vh - 80px);
+    min-height: calc(100svh - 80px);
     padding-top: 80px;
     padding-bottom: 96px;
   }
@@ -440,6 +504,10 @@ textarea {
 
 .btn {
   display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  flex: 0 0 auto;
+  align-self: flex-start;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -479,15 +547,39 @@ textarea {
 }
 
 .arrow-icon {
+  position: relative;
   display: inline-block;
-  width: 14px;
-  height: 14px;
-  flex: 0 0 auto;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
+  color: currentColor;
   transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.arrow-icon::before,
+.project-title-arrow::before,
+.social-arrow::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 6px;
+  height: 6px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+}
+
+.arrow-icon::after,
+.project-title-arrow::after,
+.social-arrow::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 1px;
+  width: 10px;
+  border-top: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transform-origin: center;
 }
 
 .group:hover .arrow-icon {
@@ -670,14 +762,12 @@ textarea {
 }
 
 .project-title-arrow {
+  position: relative;
+  display: inline-block;
   width: 14px;
-  height: 14px;
-  flex: 0 0 auto;
+  height: 12px;
+  flex: 0 0 14px;
   color: rgba(18, 18, 18, 0.55);
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
   transition: transform 250ms var(--ease-out-expo), color 150ms ease;
 }
 
@@ -1422,15 +1512,21 @@ textarea.field-input {
 }
 
 .social-arrow {
+  position: relative;
   display: inline-block;
   width: 12px;
   height: 12px;
-  margin-left: 2px;
+  color: currentColor;
   vertical-align: -1px;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+}
+
+.social-arrow::before {
+  width: 5px;
+  height: 5px;
+}
+
+.social-arrow::after {
+  width: 8px;
 }
 
 .footer-social-link:hover {

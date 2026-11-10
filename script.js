@@ -105,6 +105,162 @@
     return params.get("skip-preloader") === "1" || params.get("autostart") === "1";
   }
 
+  function initPageScrollbar() {
+    var root = document.documentElement;
+    var svgNamespace = "http://www.w3.org/2000/svg";
+    var scrollbar = document.createElementNS(svgNamespace, "svg");
+    var track = document.createElementNS(svgNamespace, "path");
+    var thumb = document.createElementNS(svgNamespace, "path");
+    var pathLength = 0;
+    var thumbLength = 0;
+    var draggingPointerId = null;
+    var dragStartPointerY = 0;
+    var dragStartScrollY = 0;
+    var previousScrollBehavior = "";
+    var inset = 8;
+    var radius = 10;
+
+    scrollbar.classList.add("page-scrollbar");
+    scrollbar.setAttribute("aria-hidden", "true");
+    track.classList.add("page-scrollbar-track");
+    thumb.classList.add("page-scrollbar-thumb");
+    scrollbar.appendChild(track);
+    scrollbar.appendChild(thumb);
+    document.body.appendChild(scrollbar);
+    root.classList.add("has-custom-scrollbar");
+
+    function getScrollMetrics() {
+      var scrollHeight = Math.max(root.scrollHeight, document.body.scrollHeight);
+      var viewportHeight = window.innerHeight;
+      return {
+        scrollHeight: scrollHeight,
+        viewportHeight: viewportHeight,
+        maxScroll: Math.max(0, scrollHeight - viewportHeight),
+      };
+    }
+
+    function updateThumb() {
+      if (!pathLength) return;
+
+      var metrics = getScrollMetrics();
+      var scrollRatio =
+        metrics.maxScroll > 0
+          ? Math.min(1, Math.max(0, window.scrollY / metrics.maxScroll))
+          : 0;
+      var startOffset = (pathLength - thumbLength) * scrollRatio;
+
+      thumb.setAttribute(
+        "stroke-dasharray",
+        thumbLength + " " + Math.max(0, pathLength - thumbLength)
+      );
+      thumb.setAttribute("stroke-dashoffset", String(-startOffset));
+      scrollbar.style.display = metrics.maxScroll > 0 ? "block" : "none";
+    }
+
+    function updatePath() {
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+      var edgeX = width - inset;
+      var cornerX = edgeX - radius;
+      var startX = Math.min(width * 0.91, cornerX);
+      var topY = inset;
+      var bottomY = height - inset;
+      var effectiveRadius = Math.min(radius, Math.max(0, (height - inset * 2) / 2));
+      var verticalStart = topY + effectiveRadius;
+      var verticalEnd = bottomY - effectiveRadius;
+      var pathData =
+        "M " +
+        startX +
+        " " +
+        topY +
+        " L " +
+        cornerX +
+        " " +
+        topY +
+        " Q " +
+        edgeX +
+        " " +
+        topY +
+        " " +
+        edgeX +
+        " " +
+        verticalStart +
+        " L " +
+        edgeX +
+        " " +
+        verticalEnd +
+        " Q " +
+        edgeX +
+        " " +
+        bottomY +
+        " " +
+        cornerX +
+        " " +
+        bottomY +
+        " L " +
+        startX +
+        " " +
+        bottomY;
+
+      scrollbar.setAttribute("viewBox", "0 0 " + width + " " + height);
+      track.setAttribute("d", pathData);
+      thumb.setAttribute("d", pathData);
+      pathLength = track.getTotalLength();
+
+      thumbLength = pathLength * 0.62;
+      updateThumb();
+    }
+
+    thumb.addEventListener("pointerdown", function (event) {
+      if (event.button !== 0 && event.pointerType !== "touch") return;
+      event.preventDefault();
+      draggingPointerId = event.pointerId;
+      dragStartPointerY = event.clientY;
+      dragStartScrollY = window.scrollY;
+      previousScrollBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      scrollbar.classList.add("is-dragging");
+      thumb.setPointerCapture(event.pointerId);
+    });
+
+    thumb.addEventListener("pointermove", function (event) {
+      if (event.pointerId !== draggingPointerId) return;
+      var metrics = getScrollMetrics();
+      var availableTrack = Math.max(1, window.innerHeight - inset * 2);
+      var dragRange = Math.max(1, availableTrack - thumbLength);
+      var scrollDelta =
+        ((event.clientY - dragStartPointerY) / dragRange) * metrics.maxScroll;
+      window.scrollTo(
+        0,
+        Math.min(metrics.maxScroll, Math.max(0, dragStartScrollY + scrollDelta))
+      );
+    });
+
+    function stopDragging(event) {
+      if (event.pointerId !== draggingPointerId) return;
+      draggingPointerId = null;
+      root.style.scrollBehavior = previousScrollBehavior;
+      scrollbar.classList.remove("is-dragging");
+      if (thumb.hasPointerCapture(event.pointerId)) {
+        thumb.releasePointerCapture(event.pointerId);
+      }
+    }
+
+    thumb.addEventListener("pointerup", stopDragging);
+    thumb.addEventListener("pointercancel", stopDragging);
+    window.addEventListener("scroll", updateThumb, { passive: true });
+    window.addEventListener("resize", updatePath);
+    window.addEventListener("load", updatePath, { once: true });
+
+    if (typeof ResizeObserver !== "undefined") {
+      var resizeObserver = new ResizeObserver(updatePath);
+      resizeObserver.observe(root);
+      resizeObserver.observe(document.body);
+    }
+
+    updatePath();
+  }
+
   function splitHeadingWords(heading) {
     if (heading.getAttribute("data-words-split") === "true") {
       return Array.prototype.slice.call(heading.querySelectorAll(".word"));
@@ -626,6 +782,7 @@
 
   function bootstrap() {
     bindErrorActions();
+    initPageScrollbar();
 
     var isStaticErrorPage =
       document.body && document.body.getAttribute("data-page") === "error";
