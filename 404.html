@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page not found | Aishath Shafa</title>
+    <meta
+      name="description"
+      content="The requested page could not be found on Aishath Shafa’s portfolio."
+    />
+    <link rel="icon" type="image/svg+xml" href="./public/assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body data-page="error">
+    <div class="page-shell">
+      <!-- Sticky Header & Navigation -->
+      <header class="site-header header-animate">
+        <div class="container header-inner">
+          <div class="brand">
+            <a href="./index.html" class="brand-name">Aishath Shafa</a>
+            <span class="brand-role">Software engineer</span>
+          </div>
+
+          <nav class="site-nav" aria-label="Primary">
+            <a href="./index.html#work" class="nav-link">Work</a>
+            <a href="./index.html#about" class="nav-link">About</a>
+            <a href="./index.html#contact" class="nav-link">Contact</a>
+            <a
+              href="./public/assets/CV.pdf"
+              download="Aishath-Shafa-CV.pdf"
+              class="nav-link"
+              >CV</a
+            >
+          </nav>
+        </div>
+      </header>
+
+      <!-- Standalone 404 Error Page -->
+      <main id="error-view" class="error-section" aria-live="assertive">
+        <div class="container">
+          <div class="error-grid">
+            <div class="error-left">
+              <div class="reveal-up is-visible">
+                <p id="error-code-label" class="section-label">
+                  (404) Page not found
+                </p>
+              </div>
+
+              <h1
+                id="error-heading"
+                class="error-heading"
+                data-animate-heading
+                data-animate-immediate
+              >
+                Page not found.
+              </h1>
+
+              <p id="error-copy" class="error-copy">
+                The page you are looking for may have been moved, renamed, or
+                doesn’t exist. You can try goingto the portfolio or write to me
+                directly.
+              </p>
+
+              <div class="error-actions">
+                <a
+                  href="./index.html"
+                  id="error-home-btn"
+                  class="btn btn-primary group"
+                >
+                  <span>Back to home</span>
+                  <span class="arrow-icon" aria-hidden="true">↗</span>
+                </a>
+
+                <button
+                  type="button"
+                  id="error-reload-btn"
+                  class="btn btn-secondary"
+                >
+                  Reload page
+                </button>
+              </div>
+            </div>
+
+            <div class="error-right">
+              <div class="error-card">
+                <div class="detail-row">
+                  <p class="detail-label">STATUS</p>
+                  <p id="error-status-value" class="detail-value">
+                    404 - Route unavailable
+                  </p>
+                </div>
+
+                <div class="detail-row">
+                  <p class="detail-label">REQUESTED PATH</p>
+                  <p id="error-path-value" class="detail-value">/404.html</p>
+                </div>
+
+                <div class="detail-row">
+                  <p class="detail-label">DIRECT CONTACT</p>
+                  <a
+                    href="mailto:aishathshafaofficial@gmail.com"
+                    class="contact-email-link"
+                  >
+                    aishathshafaofficial@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-callout reveal-up" data-reveal>
+            <p class="footer-callout-label">
+              Have a project in mind? Write to me.
+            </p>
+            <div>
+              <a
+                href="mailto:aishathshafaofficial@gmail.com"
+                class="footer-email"
+              >
+                <span>aishathshafaofficial@gmail.com</span>
+                <span class="footer-email-underline"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <div class="footer-socials">
+              <a
+                href="https://github.com/aishshafa"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-social-link"
+                >GitHub ↗</a
+              >
+              <a
+                href="https://linkedin.com/in/aishathshafa"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-social-link"
+                >LinkedIn ↗</a
+              >
+            </div>
+
+            <p class="footer-copy">© 2026 Aishath Shafa · Maldives</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

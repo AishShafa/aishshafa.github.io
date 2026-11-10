@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aishath Shafa</title>
+    <meta
+      name="description"
+      content="Portfolio of Aishath Shafa, software engineer who develops, tests and implements systems, websites and databases."
+    />
+    <meta property="og:title" content="Aishath Shafa - Software engineer" />
+    <meta
+      property="og:description"
+      content="Portfolio of Aishath Shafa, software engineer who develops, tests and implements systems, websites and databases."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="./public/assets/favicon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body class="is-loading">
+    <!-- Preloading Screen -->
+    <div
+      id="preloader"
+      class="preloader"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading portfolio"
+    >
+      <div class="container preloader-top">
+        <div class="preloader-brand">
+          <span class="brand-name">Aishath Shafa</span>
+          <span class="brand-role">Software engineer</span>
+        </div>
+        <span class="section-label">(00) Loading</span>
+      </div>
+
+      <div class="container preloader-center">
+        <div class="preloader-meta">
+          <span class="section-label">Loading portfolio</span>
+          <span id="preloader-status" class="section-label">Initializing</span>
+        </div>
+
+        <div id="preloader-counter" class="preloader-counter">00%</div>
+
+        <div class="preloader-track" aria-hidden="true">
+          <div id="preloader-bar" class="preloader-bar"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="preloader-bottom">
+          <span class="section-label">Portfolio</span>
+          <span class="section-label">2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-shell">
+      <!-- Sticky Header & Navigation -->
+      <header class="site-header header-animate">
+        <div class="container header-inner">
+          <div class="brand">
+            <a href="./index.html" class="brand-name">Aishath Shafa</a>
+            <span class="brand-role">Software engineer</span>
+          </div>
+
+          <nav class="site-nav" aria-label="Primary">
+            <a href="#work" class="nav-link">Work</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <a
+              href="./public/assets/CV.pdf"
+              download="CV.pdf"
+              class="nav-link"
+              >CV</a
+            >
+          </nav>
+        </div>
+      </header>
+
+      <!-- Main Portfolio Content -->
+      <main id="portfolio-main">
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <div class="container">
+            <div class="hero-title-wrap">
+              <h1
+                class="hero-title"
+                data-animate-heading
+                data-animate-immediate
+                data-base-delay="0.15"
+              >
+                Aishath Shafa
+              </h1>
+            </div>
+
+            <div class="hero-bottom">
+              <div class="hero-bio reveal-up" data-animate-immediate>
+                <p>
+                  Software engineer who develops, tests and implements systems,
+                  websites and databases, from database design and backend
+                  through to the frontend and cloud deployment. Experienced in
+                  database design, API and automated testing, preparing data for
+                  reporting, and writing clear technical documentation.
+                </p>
+              </div>
+
+              <div class="hero-actions reveal-up" data-animate-immediate>
+                <a href="#contact" class="btn btn-primary group">
+                  <span>Start a project</span>
+                  <span class="arrow-icon" aria-hidden="true">↗</span>
+                </a>
+
+                <a href="#work" class="btn btn-secondary group">
+                  <span>See the work</span>
+                  <span class="arrow-icon" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- (01) Selected Work -->
+        <section id="work" class="work-section">
+          <div class="container">
+            <div class="section-header">
+              <div class="section-label-wrap reveal-up" data-reveal>
+                <p class="section-label">(01) Selected work</p>
+              </div>
+
+              <h2 class="work-heading" data-animate-heading>Recent projects</h2>
+            </div>
+
+            <div class="projects-grid">
+              <!-- ShowRecs -->
+              <article
+                class="project-card group"
+                data-reveal
+                style="--card-delay: 0ms"
+              >
+                <div class="project-image-frame">
+                  <img
+                    src="./public/assets/showrecs.png"
+                    alt="ShowRecs - Discover your next favorite watch"
+                    loading="lazy"
+                    decoding="async"
+                    class="project-image"
+                  />
+                </div>
+                <div class="project-body">
+                  <h3 class="project-title">
+                    <a
+                      href="https://showrecs.isleweb.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-title-link"
+                    >
+                      <span>ShowRecs</span>
+                      <span class="project-title-arrow" aria-hidden="true">↗</span>
+                    </a>
+                  </h3>
+                  <p class="project-subtitle">
+                    Discover your next favorite watch
+                  </p>
+                  <p class="project-description">
+                    Connect Trakt and get show and movie recommendations that
+                    match the mood, pacing and style of what you already love,
+                    each with a reason.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Zoom Travels -->
+              <article
+                class="project-card group"
+                data-reveal
+                style="--card-delay: 100ms"
+              >
+                <div class="project-image-frame">
+                  <img
+                    src="./public/assets/zoomtravels.png"
+                    alt="Zoom Travels - Cheap flights from top airlines around the world"
+                    loading="lazy"
+                    decoding="async"
+                    class="project-image"
+                  />
+                </div>
+                <div class="project-body">
+                  <h3 class="project-title">
+                    <a
+                      href="https://zoomtravels.net"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-title-link"
+                    >
+                      <span>Zoom Travels</span>
+                      <span class="project-title-arrow" aria-hidden="true">↗</span>
+                    </a>
+                  </h3>
+                  <p class="project-subtitle">
+                    Discover cheap flights from top airlines around the world
+                  </p>
+                  <p class="project-description">
+                    A responsive single-page travel site with a sticky video
+                    hero, scroll-aware navigation and expandable FAQs.
+                  </p>
+                </div>
+              </article>
+
+              <!-- TheMediBind -->
+              <article
+                class="project-card group"
+                data-reveal
+                style="--card-delay: 200ms"
+              >
+                <div class="project-image-frame">
+                  <img
+                    src="./public/assets/themedibind.png"
+                    alt="TheMediBind - Digital medical binder for health records"
+                    loading="lazy"
+                    decoding="async"
+                    class="project-image"
+                  />
+                </div>
+                <div class="project-body">
+                  <h3 class="project-title">
+                    <a
+                      href="https://themedibind.isleweb.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-title-link"
+                    >
+                      <span>TheMediBind</span>
+                      <span class="project-title-arrow" aria-hidden="true">↗</span>
+                    </a>
+                  </h3>
+                  <p class="project-subtitle">
+                    Digital medical binder for health records
+                  </p>
+                  <p class="project-description">
+                    A digital medical binder for your lab results, scans,
+                    prescriptions and visit notes. Add pages from photos or
+                    PDFs, search every word and watch your results change over
+                    time.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Alternative Portfolio: OS Portfolio -->
+            <div class="alt-portfolio-block reveal-up" data-reveal>
+              <div class="alt-portfolio-grid">
+                <div class="alt-portfolio-info">
+                  <p class="section-label">Alternative portfolio</p>
+                  <h3 class="alt-portfolio-heading">OS Portfolio</h3>
+                  <p class="alt-portfolio-subtitle">
+                    Interactive retro desktop edition
+                  </p>
+                  <p class="alt-portfolio-description">
+                    An alternative interactive portfolio styled as a classic
+                    pink iMac desktop, complete with draggable sticky notes, a
+                    mini music player, and windowed views for projects,
+                    experience, skills, and CV.
+                  </p>
+                  <div class="alt-portfolio-actions">
+                    <button
+                      type="button"
+                      id="open-os-preview-btn"
+                      class="btn btn-secondary"
+                    >
+                      <span>View preview</span>
+                      <span class="arrow-icon" aria-hidden="true">↗</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="alt-portfolio-media">
+                  <button
+                    type="button"
+                    id="os-preview-thumb-btn"
+                    class="alt-portfolio-frame group"
+                    aria-label="Enlarge OS Portfolio preview"
+                  >
+                    <img
+                      src="./public/assets/OS-Portfolio.png"
+                      alt="OS Portfolio - Alternative interactive desktop portfolio"
+                      loading="lazy"
+                      decoding="async"
+                      class="alt-portfolio-image"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- (02) About -->
+        <section id="about" class="about-section">
+          <div class="container">
+            <div class="about-grid">
+              <div class="about-left">
+                <div class="about-label-wrap reveal-up" data-reveal>
+                  <p class="section-label">(02) About</p>
+                </div>
+
+                <h2 class="about-heading" data-animate-heading>
+                  Full-stack engineering, clear architecture and reliable
+                  systems.
+                </h2>
+
+                <p class="about-copy reveal-up" data-reveal>
+                  Based in the Maldives and collaborating with teams from anywhere.
+                  Specializing in designing resilient databases, building robust backend systems, implementing
+                  automated testing pipelines, and creating responsive frontend
+                  applications with clear technical documentation every step of
+                  the way.
+                </p>
+              </div>
+
+              <div class="about-right">
+                <div
+                  class="detail-row reveal-up"
+                  data-reveal
+                  style="--reveal-delay: 0ms"
+                >
+                  <p class="detail-label">BASED IN</p>
+                  <p class="detail-value">
+                    Maldives
+                  </p>
+                </div>
+
+                <div
+                  class="detail-row reveal-up"
+                  data-reveal
+                  style="--reveal-delay: 100ms"
+                >
+                  <p class="detail-label">FOCUS</p>
+                  <p class="detail-value">
+                    Database design, backend systems, websites &amp; cloud
+                    deployment
+                  </p>
+                </div>
+
+                <div
+                  class="detail-row reveal-up"
+                  data-reveal
+                  style="--reveal-delay: 200ms"
+                >
+                  <p class="detail-label">EXPERTISE</p>
+                  <p class="detail-value">
+                    API &amp; frontend development, automated testing, data reporting, and technical
+                    documentation
+                  </p>
+                </div>
+
+                <div
+                  class="detail-row reveal-up"
+                  data-reveal
+                  style="--reveal-delay: 300ms"
+                >
+                  <p class="detail-label">WORKING ON</p>
+                  <p class="detail-value">
+                    Robust web systems and scalable data architectures
+                  </p>
+                </div>
+
+                <div class="detail-bottom-line"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- (03) Contact -->
+        <section id="contact" class="contact-section">
+          <div class="container">
+            <div class="section-header">
+              <div class="section-label-wrap reveal-up" data-reveal>
+                <p class="section-label">(03) Contact</p>
+              </div>
+
+              <h2 class="contact-heading" data-animate-heading>
+                Let’s make something good.
+              </h2>
+            </div>
+
+            <div class="contact-grid">
+              <div class="contact-info">
+                <div
+                  class="contact-info-item reveal-up"
+                  data-reveal
+                  style="--reveal-delay: 0ms"
+                >
+                  <p class="detail-label">EMAIL</p>
+                  <a
+                    href="mailto:aishathshafaofficial@gmail.com"
+                    class="contact-email-link"
+                  >
+                    aishathshafaofficial@gmail.com
+                  </a>
+                </div>
+
+                <div
+                  class="contact-info-item reveal-up"
+                  data-reveal
+                  style="--reveal-delay: 100ms"
+                >
+                  <p class="detail-label">LOCATION</p>
+                  <p class="detail-value">Maldives</p>
+                </div>
+
+                <div
+                  class="contact-info-item reveal-up"
+                  data-reveal
+                  style="--reveal-delay: 200ms"
+                >
+                  <p class="detail-label">REPLY TIME</p>
+                  <p class="detail-value">Within two working days</p>
+                </div>
+              </div>
+
+              <div class="contact-card reveal-up" data-reveal>
+                <div id="contact-success" class="form-success hidden">
+                  <div class="success-icon" aria-hidden="true">✓</div>
+                  <h3 class="success-title">Message sent</h3>
+                  <p id="success-name-text" class="success-message">
+                    Thank you, there. I received your note and will get back to
+                    you within two working days.
+                  </p>
+                  <div class="success-reset-wrap">
+                    <button
+                      type="button"
+                      id="reset-form-btn"
+                      class="reset-btn"
+                    >
+                      Send another message
+                    </button>
+                  </div>
+                </div>
+
+                <form
+                  id="contact-form"
+                  class="contact-form"
+                  action="https://formsubmit.co/aishathshafaofficial@gmail.com"
+                  method="POST"
+                  novalidate
+                >
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value="New portfolio inquiry"
+                  />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input
+                    type="text"
+                    name="_honey"
+                    tabindex="-1"
+                    autocomplete="off"
+                    class="sr-only"
+                  />
+
+                  <div class="form-row-2">
+                    <div>
+                      <label for="contact-name" class="field-label"
+                        >Your name</label
+                      >
+                      <input
+                        id="contact-name"
+                        type="text"
+                        name="name"
+                        placeholder="Your Name"
+                        class="field-input"
+                      />
+                      <p id="error-name" class="field-error hidden"></p>
+                    </div>
+
+                    <div>
+                      <label for="contact-email" class="field-label"
+                        >Email</label
+                      >
+                      <input
+                        id="contact-email"
+                        type="email"
+                        name="email"
+                        placeholder="your@email.com"
+                        class="field-input"
+                      />
+                      <p id="error-email" class="field-error hidden"></p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="contact-company" class="field-label"
+                      >Company</label
+                    >
+                    <input
+                      id="contact-company"
+                      type="text"
+                      name="company"
+                      placeholder="Optional"
+                      class="field-input"
+                    />
+                  </div>
+
+                  <div>
+                    <label for="contact-service" class="field-label"
+                      >What do you need?</label
+                    >
+                    <input
+                      id="contact-service"
+                      type="text"
+                      name="service"
+                      placeholder="Optional"
+                      class="field-input"
+                    />
+                  </div>
+
+                  <div>
+                    <label for="contact-message" class="field-label"
+                      >Tell me about the project</label
+                    >
+                    <textarea
+                      id="contact-message"
+                      rows="4"
+                      name="message"
+                      placeholder="What are you making, who is it for, and when does it need to be ready?"
+                      class="field-input"
+                    ></textarea>
+                    <p id="error-message" class="field-error hidden"></p>
+                  </div>
+
+                  <p id="form-submit-error" class="field-error hidden"></p>
+
+                  <div class="submit-wrap">
+                    <button
+                      type="submit"
+                      id="submit-btn"
+                      class="submit-btn group"
+                    >
+                      <span>Send message</span>
+                      <span class="arrow-icon" aria-hidden="true">↗</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Fallback Error View (Shown on unknown routes, error routes, or runtime errors) -->
+      <main id="error-view" class="error-section hidden" aria-live="assertive">
+        <div class="container">
+          <div class="error-grid">
+            <div class="error-left">
+              <div class="reveal-up is-visible">
+                <p id="error-code-label" class="section-label">
+                  (404) Page not found
+                </p>
+              </div>
+
+              <h1 id="error-heading" class="error-heading" data-animate-heading>
+                Page not found.
+              </h1>
+
+              <p id="error-copy" class="error-copy">
+                The page you are looking for may have been moved, renamed, or
+                doesn’t exist. You can head back to the portfolio or write to me
+                directly.
+              </p>
+
+              <div class="error-actions">
+                <a
+                  href="./index.html"
+                  id="error-home-btn"
+                  class="btn btn-primary group"
+                >
+                  <span>Back to home</span>
+                  <span class="arrow-icon" aria-hidden="true">↗</span>
+                </a>
+
+                <button
+                  type="button"
+                  id="error-reload-btn"
+                  class="btn btn-secondary"
+                >
+                  Reload page
+                </button>
+              </div>
+            </div>
+
+            <div class="error-right">
+              <div class="error-card">
+                <div class="detail-row">
+                  <p class="detail-label">STATUS</p>
+                  <p id="error-status-value" class="detail-value">
+                    404 - Route unavailable
+                  </p>
+                </div>
+
+                <div class="detail-row">
+                  <p class="detail-label">REQUESTED PATH</p>
+                  <p id="error-path-value" class="detail-value">/</p>
+                </div>
+
+                <div class="detail-row">
+                  <p class="detail-label">DIRECT CONTACT</p>
+                  <a
+                    href="mailto:aishathshafaofficial@gmail.com"
+                    class="contact-email-link"
+                  >
+                    aishathshafaofficial@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-callout reveal-up" data-reveal>
+            <p class="footer-callout-label">
+              Have a project in mind? Write to me.
+            </p>
+            <div>
+              <a
+                href="mailto:aishathshafaofficial@gmail.com"
+                class="footer-email"
+              >
+                <span>aishathshafaofficial@gmail.com</span>
+                <span class="footer-email-underline"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <div class="footer-socials">
+              <a
+                href="https://github.com/aishshafa"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-social-link"
+                >GitHub ↗</a
+              >
+              <a
+                href="https://linkedin.com/in/aishathshafa"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-social-link"
+                >LinkedIn ↗</a
+              >
+            </div>
+
+            <p class="footer-copy">© 2026 Aishath Shafa · Maldives</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Lightbox Modal for Alternative OS Portfolio Preview -->
+    <div
+      id="os-lightbox"
+      class="lightbox hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="os-lightbox-title"
+    >
+      <div class="lightbox-backdrop" id="os-lightbox-backdrop"></div>
+      <div class="lightbox-dialog">
+        <div class="lightbox-header">
+          <div>
+            <span class="section-label">Alternative portfolio</span>
+            <h4 id="os-lightbox-title" class="lightbox-title">
+              OS Portfolio - Interactive Desktop Edition
+            </h4>
+          </div>
+          <button
+            type="button"
+            id="close-os-lightbox-btn"
+            class="btn btn-secondary lightbox-close"
+            aria-label="Close preview"
+          >
+            Close ✕
+          </button>
+        </div>
+        <div class="lightbox-body">
+          <img
+            src="./public/assets/OS-Portfolio.png"
+            alt="OS Portfolio full preview"
+            class="lightbox-image"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
